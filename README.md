@@ -7,7 +7,7 @@ This profile generator provides a REST API to serve profile information in JSON 
 1. **Clone the Repository:**
 
    ```sh
-   git clone <repository-url>
+   git clone git@github.com:MurmurationsNetwork/profile-generator.git
    cd profile-generator
    ```
 

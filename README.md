@@ -13,7 +13,7 @@ This profile generator provides a REST API to serve profile information in JSON 
 
 2. **Set Up Docker Buildx:**
 
-   Ensure you have Docker Buildx installed and configured. Docker Buildx is a Docker CLI plugin that extends the Docker command with the full support of the features provided by Moby BuildKit builder toolkit.
+   Ensure you have Docker Buildx installed and configured. Docker Buildx is a Docker CLI plugin that extends the Docker command with the full support of the features provided by the Moby BuildKit builder toolkit.
 
    ```sh
    docker buildx create --use
@@ -30,24 +30,32 @@ This profile generator provides a REST API to serve profile information in JSON 
 
 ## Run Inside Your Server
 
-1. **Pull the Docker Image from Docker Hub:**
+1. **Login to Your Server:**
+
+   ```sh
+   ssh -i <path-to-your-private-key> root@<your-server-ip>
+   ```
+
+2. **Pull the Docker Image from Docker Hub:**
 
    ```sh
    docker pull <your-dockerhub-username>/profile-generator
    ```
 
-2. **Run the Docker Container:**
+3. **Run the Docker Container:**
 
    ```sh
-   docker run -d -p 80:8080 <your-dockerhub-username>/profile-generator
+   docker stop profile-generator
+   docker rm -f profile-generator
+   docker run -d -p 80:8080 --name profile-generator <your-dockerhub-username>/profile-generator
    ```
 
-3. **Verify the Deployment:**
+4. **Verify the Deployment:**
 
-   Visit `http://<your-server-ip>/profile` in a web browser or use `curl` to verify that the application is running:
+   Visit `http://<your-server-ip>/profile/{any-number}` in a web browser or use `curl` to verify that the application is running:
 
    ```sh
-   curl http://<your-server-ip>/profile
+   curl http://<your-server-ip>/profile/120
    ```
 
    You should receive a JSON response similar to:

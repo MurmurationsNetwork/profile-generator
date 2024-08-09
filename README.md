@@ -52,10 +52,10 @@ This profile generator provides a REST API to serve profile information in JSON 
 
 4. **Verify the Deployment:**
 
-   Visit `http://<your-server-ip>/profile/{any-number}` in a web browser or use `curl` to verify that the application is running:
+   Visit `http://<your-server-ip>/profile/small/{any-number}` in a web browser or use `curl` to verify that the application is running:
 
    ```sh
-   curl http://<your-server-ip>/profile/120
+   curl http://<your-server-ip>/profile/small/120
    ```
 
    You should receive a JSON response similar to:

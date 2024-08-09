@@ -10,8 +10,14 @@ import (
 
 func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/profile", controller.GetProfile).Methods("GET")
-	router.HandleFunc("/profile/{rest:.*}", controller.GetProfile).Methods("GET") // Wildcard for any path starting with /profile
+
+	router.HandleFunc("/profile/small", controller.GetShortProfile).Methods("GET")
+	router.HandleFunc("/profile/medium", controller.GetMediumProfile).Methods("GET")
+	router.HandleFunc("/profile/large", controller.GetLargeProfile).Methods("GET")
+
+	router.HandleFunc("/profile/small/{rest:.*}", controller.GetShortProfile).Methods("GET")
+	router.HandleFunc("/profile/medium/{rest:.*}", controller.GetMediumProfile).Methods("GET")
+	router.HandleFunc("/profile/large/{rest:.*}", controller.GetLargeProfile).Methods("GET")
 
 	log.Println("Server running on port 8080")
 	log.Fatal(http.ListenAndServe(":8080", router))
